@@ -21,23 +21,42 @@
 {% endblock %}
 
 {% block content %}
+<div class="row">
+    <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+            <h2>{{ object.title }}</h2>
 
-<h2>{{ object.title }}</h2>
+                <p>
+                    {% if object.get_previous %}
+                    <a href="{{ object.get_previous.get_absolute_url }}" title="View previous post">
+                        &laquo;-- {{ object.get_previous }}     <!-- &laquo; : << 기호 -->
+                    </a>
+                    {% endif %}
+                </p>
 
-    <p>
-        {% if object.get_previous %}
-        <a href="{{ object.get_previous.get_absolute_url }}" title="View previous post">
-            &laquo;-- {{ object.get_previous }}     <!-- &laquo; : << 기호 -->
-        </a>
-        {% endif %}
-    </p>
+                <p>{{ object.modify_dt|date:"j F Y" }}</p>
+                <br>
 
-    <p>{{ object.modify_dt|date:"j F Y" }}</p>
-    <br>
+                <div>
+                    {{ object.content|linebreaks }}
+                </div>
 
-    <div>
-        {{ object.content|linebreaks }}
+                <br>
+                <div>
+                    <b>TAGS</b> <i class="fas fa-tag"></i>
+                    {% load taggit_templatetags2_tags %}
+                    {% get_tags_for_object object as "tags" %}
+                    {% for tag in tags %}
+                    <a href="{% url 'blog:tagged_object_list' tag.name %}">{{ tag.name }}</a>
+                    {% endfor %}
+                    &emsp;
+                    <a href="{% url 'blog:tag_cloud' %}">
+                        <span class="btn btn-info btn-sm">Tag Cloud</span>
+                    </a>
+                </div>
+        </div>
     </div>
+</div>
 
 {% endblock %}
 

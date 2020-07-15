@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'bookmark.apps.BookmarkConfig',
     # blog app 등록!
     'blog.apps.BlogConfig',
+    # tagging 앱 등록!
+    'taggit.apps.TaggitAppConfig',
+    'taggit_templatetags2',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +133,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+TAGGIT_CASE_INSENSITIVE = True
+TAGGIT_LIMIT = 50
