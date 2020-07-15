@@ -14,7 +14,7 @@ urlpatterns = [
     re_path(r'^post/(?P<slug>[-\w]+)/$', views.PostDV.as_view(), name='post_detail'),
 
     # Example: /blog/archive/
-    path('archive/<int:year>/', views.PostAV.as_view(), name='post_archive'),
+    path('archive/', views.PostAV.as_view(), name='post_archive'),
 
     # Example: /blog/archive/2019/
     path('archive/<int:year>/', views.PostYAV.as_view(), name='post_year_archive'),

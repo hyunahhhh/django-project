@@ -1,9 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} post_archive {% endblock %}
+
+{% block header %}
+<header class="masthead" style="background-image: url({% static 'img/seoul-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>POST ARCHIVE</h1>
+            <span class="subheading">post_archive</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+
     <h1>Post Archives until {% now "N d, Y" %}</h1>
     <ul>
         {% for date in date_list %}
@@ -24,5 +42,7 @@
             </li>
         </ul>
     </div>
-</body>
-</html>
+
+{% endblock %}
+
+{% block extra-script %}{% endblock %}

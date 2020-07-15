@@ -1,34 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Django-Blog</title>
-</head>
-<body>
-    <h1>Blog List</h1>
-    <br>
+{% extends 'base.html' %}
 
-    {% for post in posts %}
-        <h3><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a> </h3>
-        {{ post.modify_dt|date:"N d, Y" }}
-        <p>{{ post.description }}</p>
-    {% endfor %}
+{% load static %}
 
-    <br>
+{% block title %} Django-Blog {% endblock %}
 
-    <div>
-        <span>
-            {% if page_obj.has_previous %}
-                <a href="?page={{ page_obj.previous_page_number }}"> 이전페이지</a>
-            {% endif %}
-
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-
-            {% if page_obj.has_next %}
-                <a href="?page={{ page_obj.next_page_number }}"> 다음페이지 </a>
-            {% endif %}
-        </span>
+{% block header %}
+<header class="masthead" style="background-image: url({% static 'img/seoul_night-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>HYUNAH BLOG</h1>
+            <span class="subheading">My essay list</span>
+          </div>
+        </div>
+      </div>
     </div>
+</header>
+{% endblock %}
 
-</body>
-</html>
+{% block content %}
+<div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+        <div class="post-preview">
+            <h1>Blog List</h1>
+                <br>
+                {% for post in posts %}
+                    <h3><a href='{{ post.get_absolute_url }}'>{{ post.title }}</a> </h3>
+                    {{ post.modify_dt|date:"N d, Y" }}
+                    <p>{{ post.description }}</p>
+                {% endfor %}
+                <br>
+                <div>
+                    <span>
+                        {% if page_obj.has_previous %}
+                            <a href="?page={{ page_obj.previous_page_number }}"> 이전페이지</a>
+                        {% endif %}
+
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}"> 다음페이지 </a>
+                        {% endif %}
+                    </span>
+                </div>
+        </div>
+      </div>
+</div>
+
+{% endblock %}
+
+{% block extra-script %}{% endblock %}

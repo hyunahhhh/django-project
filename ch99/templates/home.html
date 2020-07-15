@@ -1,0 +1,31 @@
+<!--영역별로 재정의할 블록을 지정해주는 코드-->
+<!--타이틀, 헤더, 컨텐트, 추가적인 스크립트 블록!-->
+<!--title, header, content, extra-script 블록!-->
+
+<!--base.html을 확장해-->
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} home.html {% endblock %}
+
+{% block header %}
+<header class="masthead" style="background-image: url({% static 'img/greece-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>HOME</h1>
+            <span class="subheading">hyunah's blog</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+{% endblock %}
+
+{% block extra-script %}{% endblock %}

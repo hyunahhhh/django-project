@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Django Bookmark Detail</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Django Bookmark Detail {% endblock %}
+
+{% block header %}
+<header class="masthead" style="background-image: url({% static 'img/sea-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>BOOKMARK</h1>
+            <span class="subheading">Bookmark Detail</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
 
 <div id="content">
     <h1>{{ object.title }}</h1>
@@ -13,6 +29,6 @@
     </ul>
 </div>
 
+{% endblock %}
 
-</body>
-</html>
+{% block extra-script %}{% endblock %}

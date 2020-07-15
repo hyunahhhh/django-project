@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-    <h1>Post Archives for {{ day|date:"N d, Y" }}</h1>
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} post_archive_day {% endblock %}
+
+{% block header %}
+<header class="masthead" style="background-image: url({% static 'img/seoul-bg.jpg' %})">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>POST ARCHIVE DAY</h1>
+            <span class="subheading">post_archive_day</span>
+          </div>
+        </div>
+      </div>
+    </div>
+</header>
+{% endblock %}
+
+{% block content %}
+
+<h1>Post Archives for {{ day|date:"N d, Y" }}</h1>
 
         <div>
             <ul>
@@ -17,5 +35,7 @@
             </ul>
 
         </div>
-</body>
-</html>
+
+{% endblock %}
+
+{% block extra-script %}{% endblock %}
