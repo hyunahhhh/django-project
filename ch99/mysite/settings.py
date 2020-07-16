@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     # tagging 앱 등록!
     'taggit.apps.TaggitAppConfig',
     'taggit_templatetags2',
+    # photo 앱 등록!
+    'photo.apps.PhotoConfig',
+    # 인증 기능 관련
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +143,6 @@ TAGGIT_LIMIT = 50
 
 DISQUS_SHORTNAME = 'hyunah-django'
 DISQUS_MY_DOMAIN = 'http://127.0.0.1:8000'
+
+# LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/'
